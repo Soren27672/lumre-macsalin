@@ -1,4 +1,3 @@
-import randomInteger from "/node_modules/random-int/index.js";
 
 const consonants = ["b","p","g","c","d","t","v","f","h","w","y","x","l","r","m","n","z","s","zj","sz"];
 const vowels = ["a","ā","e","ē","i","ī","u","ū","o"];
@@ -181,4 +180,19 @@ function romanize(syllables) {
     }
 
     return romanization.join('');
+}
+
+function randomInteger(minimum, maximum) {
+	if (maximum === undefined) {
+		maximum = minimum;
+		minimum = 0;
+	}
+
+	if (typeof minimum !== 'number' || typeof maximum !== 'number') {
+		throw new TypeError('Expected all arguments to be numbers');
+	}
+
+	return Math.floor(
+		(Math.random() * (maximum - minimum + 1)) + minimum
+	);
 }
