@@ -55,7 +55,7 @@ main {
     font-size: 5em;
 }
 
-.syllable {
+.compelte-syllable, .no-close-syllable, .ncdv-syllable {
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -68,7 +68,7 @@ main {
     height: 0.0625em;
 }
 
-.complete-lateral-panels {
+.complete-lateral-panels, .no-close-lateral-panels,  .ncdv-lateral-panels {
     display: flex;
     column-gap: 0.0625em;
 
@@ -76,7 +76,7 @@ main {
     width: fit-content;
 }
 
-.complete-left-panel {
+.complete-left-panel, .no-close-left-panel, .no-close-right-panel, .ncdv-left-panel {
     display: flex;
     column-gap: 0.0625em;
 
@@ -85,14 +85,14 @@ main {
     align-items: baseline;
 }
 
-.complete-right-panel {
+.complete-right-panel, .ncdv-right-panel {
     display: flex;
     flex-direction: column;
     width: fit-content;
     height: 100%;
 }
 
-.complete-right-top-panel {
+.complete-right-top-panel, .ncdv-right-top-panel {
     display: flex;
     align-items: baseline;
     justify-content: end;
@@ -102,7 +102,7 @@ main {
     height: 0.4375em;
 }
 
-.complete-right-bottom-panel {
+.complete-right-bottom-panel, .ncdv-right-bottom-panel {
     display: flex;
     align-items: baseline;
     justify-content: space-evenly;
@@ -110,6 +110,10 @@ main {
 
     width: 100%;
     height: 0.4375em;
+}
+
+.ncdv-right-bottom-panel {
+    justify-content: end;
 }
 
 .phoneme {
