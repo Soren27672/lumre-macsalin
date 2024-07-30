@@ -55,7 +55,7 @@ main {
     font-size: 5em;
 }
 
-.compelte-syllable, .no-close-syllable, .ncdv-syllable {
+.compelte-syllable, .no-close-syllable, .ncdv-syllable, .vowel-syllable, .dv-syllable {
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -76,6 +76,12 @@ main {
     width: fit-content;
 }
 
+.vowel-panel {
+    display: flex;
+    height: 0.9375em;
+    width: fit-content;
+}
+
 .complete-left-panel, .no-close-left-panel, .no-close-right-panel, .ncdv-left-panel {
     display: flex;
     column-gap: 0.0625em;
@@ -92,7 +98,7 @@ main {
     height: 100%;
 }
 
-.complete-right-top-panel, .ncdv-right-top-panel {
+.complete-right-top-panel, .ncdv-right-top-panel, .dv-top-panel {
     display: flex;
     align-items: baseline;
     justify-content: end;
@@ -102,7 +108,7 @@ main {
     height: 0.4375em;
 }
 
-.complete-right-bottom-panel, .ncdv-right-bottom-panel {
+.complete-right-bottom-panel, .ncdv-right-bottom-panel, .dv-bottom-panel {
     display: flex;
     align-items: baseline;
     justify-content: space-evenly;
@@ -110,6 +116,10 @@ main {
 
     width: 100%;
     height: 0.4375em;
+}
+
+.dv-bottom-panel {
+    justify-content: end;
 }
 
 .ncdv-right-bottom-panel {

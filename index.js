@@ -413,27 +413,32 @@ function generateSyl(method) {
     }
 
     if (method === "block") {
-        var open = [];
-        var random = randomInteger(0,92);
-
-        if (random < 19) open = [...openConBlocks[random]];
-        else open = [...openConBlocks[random - 19]];
 
         var vowel = [];
+        var open = [];
+        var close = [];
+
         random = randomInteger(0,26);
 
         if (random < 9) vowel = [...vowelBlocks[random]];
         else vowel = [...vowelBlocks[random - 9]];
 
-        var close = [];
-
         if (randomInteger(0,1)) {
-            random = randomInteger(0,148);
 
-            if (random < 18) close = [...closeConBlocks[random]];
-            else close = [...closeConBlocks[random - 18]];
+            var random = randomInteger(0,92);
+            if (random < 19) open = [...openConBlocks[random]];
+            else open = [...openConBlocks[random - 19]];
+
+            if (randomInteger(0,1)) {
+                random = randomInteger(0,148);
+
+                if (random < 18) close = [...closeConBlocks[random]];
+                else close = [...closeConBlocks[random - 18]];
         }
         
+
+        }
+
 
         return {
             open: [...open],
@@ -518,10 +523,41 @@ function buildNoCloseDoubleVowel({ open, vowel }) {
     rightPanel.appendChild(e("div",["bound"]));
     const bottomPanel = rightPanel.appendChild(e("div",["ncdv-right-bottom-panel"]));
     const imgBottom = e("img",["phoneme"]);
-    imgBottom.src = `resources/symbols\ short/${vowel[1]}.png`;
+    imgBottom.src = `resources/vowels\ bottom\ right/${vowel[1]}.png`;
     bottomPanel.appendChild(imgBottom);
 
     return glyphDiv;
+}
+
+function buildVowel(vowel) {
+    const glyphDiv = e("div",["vowel-syllable"]);
+
+    glyphDiv.appendChild(e("div",["bound"]));
+
+    const panel = glyphDiv.appendChild(e(`div`,["vowel-panel"]));
+    const img = panel.appendChild(e(`img`,[`phoneme`]));
+    img.src = `resources/symbols\ tall/${vowel}.png`;
+
+    return glyphDiv;
+}
+
+function buildDoubleVowel(vowels) {
+    const glyphDiv = e(`div`,[`dv-syllable`]);
+
+    glyphDiv.appendChild(e(`div`,[`bound`]));
+
+    const topPanel = glyphDiv.appendChild(e(`div`,[`dv-top-panel`]));
+    const topImg = topPanel.appendChild(e(`img`,[`phoneme`]));
+    topImg.src = `resources/symbols\ short/${vowels[0]}.png`;
+
+    glyphDiv.appendChild(e(`div`,[`bound`]));
+
+    const bottomPanel = glyphDiv.appendChild(e(`div`,[`dv-bottom-panel`]));
+    const bottomImg = bottomPanel.appendChild(e(`img`,[`phoneme`]));
+    bottomImg.src = `resources/vowels\ bottom\ right/${vowels[1]}.png`;
+
+    return glyphDiv;
+
 }
 
 function e(type,classes,id) {
@@ -595,10 +631,13 @@ function identifySylType({open, vowel, close}) {
 
 function buildSyllable(syllable) {
     const sylType = identifySylType(syllable);
+    console.log(sylType);
 
     if (sylType === "complete") return buildComplete(syllable);
     if (sylType === "no close") return buildNoClose(syllable);
     if (sylType === "no close double vowel") return buildNoCloseDoubleVowel(syllable);
+    if (sylType === "vowel") return buildVowel(syllable.vowel[0]);
+    if (sylType === "double vowel") return buildDoubleVowel(syllable.vowel);
 }
 
 function parseRomanization(text) {
