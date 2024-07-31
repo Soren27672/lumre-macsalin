@@ -14,6 +14,10 @@ main {
 }
 
 #input {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.25em;
+
     font-size: 2em;
 }
 
@@ -55,7 +59,7 @@ main {
     font-size: 5em;
 }
 
-.compelte-syllable, .no-close-syllable, .ncdv-syllable, .vowel-syllable, .dv-syllable {
+.compelte-syllable, .no-close-syllable, .ncdv-syllable, .vowel-syllable, .dv-syllable, .consonant-syllable, .no-open-syllable {
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -76,8 +80,9 @@ main {
     width: fit-content;
 }
 
-.vowel-panel {
+.vowel-panel, .consonant-panel {
     display: flex;
+    column-gap: 0.0625em;
     height: 0.9375em;
     width: fit-content;
 }
@@ -98,7 +103,7 @@ main {
     height: 100%;
 }
 
-.complete-right-top-panel, .ncdv-right-top-panel, .dv-top-panel {
+.complete-right-top-panel, .ncdv-right-top-panel, .dv-top-panel, .no-open-top-panel {
     display: flex;
     align-items: baseline;
     justify-content: end;
@@ -108,7 +113,7 @@ main {
     height: 0.4375em;
 }
 
-.complete-right-bottom-panel, .ncdv-right-bottom-panel, .dv-bottom-panel {
+.complete-right-bottom-panel, .ncdv-right-bottom-panel, .dv-bottom-panel, .no-open-bottom-panel {
     display: flex;
     align-items: baseline;
     justify-content: space-evenly;
